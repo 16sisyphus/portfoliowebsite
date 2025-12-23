@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Mozilla+Headline:wght@200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="nav-bar">
+        <div class="logo">
+            <a href="index.html" class="logo-text">Kushagra-Gupta-Portfolio</a>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-elements" aria-label="Toggle navigation">
+            <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <nav class="nav-elements" id="nav-elements">
+            <a href="index.html">home</a>
+            <a href="resume.html">resume</a>
+            <a href="posts.html">posts</a>
+            <a href="projects.html">projects</a>
+            <a href="contact.html">contact</a>
+        </nav>
+    </div>
+    <main class="container">
+        <header>
+            <h1>Resume</h1>
+        </header>
+        <div class="resume-block">
+            <object data="resources\resume1.pdf" type="application/pdf" width="100%" height="950px">
+                <p>Your browser does not support viewing PDFs.
+                    <a href="resources\resume1.pdf" class="button">Click here to download the PDF.</a>
+                </p>
+            </object>
+        </div>
+        <section>
+            <span class="date">last updated : 19 December 2025</span>
+        </section>
+    </main>
+    <script src="scripts.js" defer></script>
+
+</body>
+
+</html>

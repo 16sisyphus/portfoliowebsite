@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kushagra-Gupta-Portfolio/home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Mozilla+Headline:wght@200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="logo">
+            <a href="index.html" class="logo-text">Kushagra-Gupta-Portfolio</a>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-elements" aria-label="Toggle navigation">
+            <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <div class="nav-elements" id="nav-elements">
+            <a href="index.html">home</a>
+            <a href="resume.html">resume</a>
+            <a href="posts.html">posts</a>
+            <a href="projects.html">projects</a>
+            <a href="contact.html">contact</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="name-bar">
+            <header>
+                <h1 class="page-title">Kushagra Gupta</h1>
+                <p class="job-title">Student @ <a href="https://iilm.ac.in/" target="_blank" rel="noopener">IILM
+                        University</a></p>
+                <p class="subtitle">
+                    learning • building • writing
+                </p>
+            </header>
+            <div class="face-sketch">
+                <video class="face-sketch-video" autoplay muted playsinline>
+                    <source src="resources/face-sketch1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>  
+        </div>
+
+        <section class="intro">
+            <p>
+                I enjoy working on problems where the goal isn’t obvious at first and the solution has to be built step
+                by step. Most of my interest in technology comes from this process — understanding a system, breaking it
+                down, and figuring out how things fit together under the hood.
+                <br><br>
+                I’m particularly drawn to areas that reward depth and clarity of thought: data structures and
+                algorithms, competitive programming, and low-level or systems-oriented topics. I spend time on problem
+                solving platforms like LeetCode, not just to “practice questions,” but to develop better ways of
+                thinking about constraints, trade-offs, and efficiency.
+                <br><br>
+                At the moment, I’m still learning — and I’m intentional about that. I’m building my foundations in
+                programming while gradually exploring deeper technical areas. I care more about understanding why
+                something works than rushing through abstractions, and I prefer learning slowly but properly.
+                <br>
+                This space is where I document that process: things I’m learning, projects I’m working on, and ideas
+                that feel worth revisiting. It’s less about showcasing finished outcomes and more about keeping a record
+                of progress, curiosity, and effort.
+            </p>
+        </section>
+
+        <section>
+            <h2>Recent Posts</h2>
+
+            <ul class="post-list">
+                <li>
+                    <a href="samplePost.html">Learning Java — week 1</a>
+                    <span class="date">Jan 2025</span>
+                </li>
+                <li>
+                    <a href="samplePost.html">Why I like static websites</a>
+                    <span class="date">Dec 2024</span>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Currently Learning</h2>
+            <ul class="learning-list">
+                <li>
+                    <p>Java DSA Bootcamp by Kunal Kushwaha</p>
+                </li>
+                <li>
+                    <p>Data Science Mentorship Program by CampusX</p>
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </section>
+        <!--TODO
+        1.PROFILES:LEETCODE,CF
+        2. INTERESTS & PASSIONS
+        3. responsive design-->
+
+        <footer>
+            <p>
+                <a href="mailto:k6forwork@gmail.com">email</a> ·
+                <a href="https://github.com/16sisyphus">github</a> ·
+                <a href="https://www.linkedin.com/in/kushagra-gupta-41a61722a/">linkedin</a>
+            </p>
+        </footer>
+
+    </main>
+
+    <script src="scripts.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var video = document.querySelector('.face-sketch-video');
+            if (!video) return;
+            // Try to play on load (muted autoplay is allowed in most browsers)
+            video.play().catch(function () { });
+            // Play on hover, pause on mouse leave
+            var container = video.parentElement;
+            container.addEventListener('mouseenter', function () { video.play().catch(function () { }); });
+            container.addEventListener('mouseleave', function () { video.pause(); });
+        });
+    </script>
+
+</body>
+
+</html>
