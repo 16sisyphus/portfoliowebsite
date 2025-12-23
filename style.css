@@ -108,6 +108,8 @@ header h1 { /*other pages title*/
     height: 100%;
     object-fit: cover;
     object-position: center;
+    filter: brightness(99%);
+    mix-blend-mode: multiply;
 }
 
 
@@ -127,6 +129,24 @@ h2 {
     padding: 1.2rem;
     border: #111 1px solid;
     border-radius: 5px;
+}
+
+/* Post body responsiveness */
+.post-body {
+    padding: 1.2rem;
+    line-height: 1.8;
+    font-size: clamp(1rem, 1vw + 0.2rem, 1.05rem);
+    word-break: break-word;
+    hyphens: auto;
+}
+.post-body p {
+    margin-bottom: 1rem;
+}
+.post-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0.6rem 0;
 }
 
 /* Post list */

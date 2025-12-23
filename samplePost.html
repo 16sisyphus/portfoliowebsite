@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sample Post</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +14,21 @@
 </head>
 
 <body>
-    <div class="nav-bar">
+    <nav class="nav-bar">
         <div class="logo">
             <a href="index.html" class="logo-text">Kushagra-Gupta-Portfolio</a>
         </div>
-        <nav class="nav-elements">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-elements" aria-label="Toggle navigation">
+            <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <div class="nav-elements" id="nav-elements">
             <a href="index.html">home</a>
             <a href="resume.html">resume</a>
             <a href="posts.html">posts</a>
             <a href="projects.html">projects</a>
             <a href="contact.html">contact</a>
-        </nav>
-    </div>
+        </div>
+    </nav>
     <main class="container">
         <header>
             <h1>Sample Post</h1>
@@ -61,6 +65,8 @@
         </article>
 
     </main>
+
+    <script src="scripts.js" defer></script>
 
 </body>
 
