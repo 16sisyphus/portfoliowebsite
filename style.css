@@ -108,7 +108,7 @@ header h1 { /*other pages title*/
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(99%);
+    filter: brightness(100%);
     mix-blend-mode: multiply;
 }
 
