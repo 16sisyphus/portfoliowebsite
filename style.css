@@ -118,6 +118,10 @@ section {
     margin-bottom: 50px;
 }
 
+section h2 {
+    text-decoration: underline;
+}
+
 h2 {
     font-size: 1.4rem;
     font-weight: normal;
