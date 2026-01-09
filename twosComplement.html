@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Why is a Java Byte -128 to 127?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Mozilla+Headline:wght@200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="logo">
+            <a href="index.html" class="logo-text">Kushagra-Gupta-Portfolio</a>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-elements" aria-label="Toggle navigation">
+            <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <div class="nav-elements" id="nav-elements">
+            <a href="index.html">home</a>
+            <a href="resume.html">resume</a>
+            <a href="posts.html">posts</a>
+            <a href="projects.html">projects</a>
+            <a href="contact.html">contact</a>
+        </div>
+    </nav>
+    <main class="container">
+        <header>
+            <h1>Why is a Java Byte -128 to 127?</h1>
+            <p class="subtitle"> Jan 2026</p>
+        </header>
+
+        <article class="post-body">
+            <p>
+                In Java, the <code>byte</code> data type has a range of <code>-128 to 127</code>. If you’ve ever looked
+                at
+                that and thought, "Wait, why isn't it symmetrical?", you're not alone. The reason is that the range has
+                to include 0.
+                If you count from -128 to 0, and then from 1 to 127, you get exactly 256 possible values—which is
+                exactly what you can
+                fit into 8 bits (<strong>2<sup>8</sup> = 256</strong>).
+
+                <br><br>
+                <i>What about Unsigned Values?</i>
+                <br>
+                You might have heard of <code>"unsigned"</code> types in languages like C or C++. Java doesn't really
+                have these for
+                primitives. An unsigned type ignores negative numbers entirely, starting from 0 and going up. This
+                effectively doubles the positive range because you aren't "wasting" a bit on the sign.
+
+                <br><br>
+                <strong>Approach 1: The Sign-Bit Method</strong>
+                <br>
+                The most obvious way to handle negatives is to use the <code>Most Significant Bit (MSB)</code>—the very
+                first bit—as a
+                toggle. If it's 1, the number is negative; if it's 0, it's positive.
+                This seems logical, but it creates two big headaches:
+                <br><br>
+                1. <strong>Negative Zero</strong>: You end up with <code>00000000</code> (0) and <code>10000000</code>
+                (-0). Mathematically, that's redundant.
+                <br>
+                2. <strong>Broken Math</strong>: Try adding 1 + (-1):
+                <br><br>
+                &nbsp;&nbsp;&nbsp;1 is <code>00000001</code> <br>
+                &nbsp;&nbsp;-1 is <code>10000001</code> <br>
+                &nbsp;&nbsp;<strong>Result</strong>: <code>10000010</code> (-2).
+                <br>
+                <strong>Incorrect.</strong>
+
+                <br><br>
+
+                <br>
+
+                <strong>Approach 2: One’s Complement</strong>
+                <br>
+                To fix the math, we could try flipping all the bits (a NOT operation) to represent a negative. This is
+                <strong>One’s
+                    Complement</strong>.
+                <br><br>
+                &nbsp;&nbsp;&nbsp;1 is <code>00000001</code> <br>
+                &nbsp;&nbsp;-1 is <code>11111110</code> <br>
+                &nbsp;&nbsp;<strong>Result of 1 + (-1)</strong>: <code>11111111</code>.
+                <br><br>
+                This is better, but <code>11111111</code> is still technically "-0." We still have two versions of zero,
+                and the hardware
+                has to do extra work to handle that inconsistency.
+
+                <br><br>
+                <br>
+                <strong>Final Approach: Two’s Complement</strong>
+                <br>
+                This is what Java (and almost all modern hardware) uses. To get a negative number in Two's Complement,
+                you
+                <strong>flip the bits and add 1</strong>. By adding that 1, we effectively shift the entire negative
+                scale, eliminating the
+                "-0" problem and making the math work perfectly with standard binary addition.
+                <br><br>
+                Let’s look at the math now:
+                <br><br>
+                &nbsp;&nbsp;&nbsp;1 is <code>00000001</code> <br>
+                &nbsp;&nbsp;-1 is <code>11111111</code> <br>
+                &nbsp;&nbsp;<strong>Addition</strong>: <code>(1) 00000000</code>
+                <br><br>
+                In an 8-bit system, that extra 1 at the beginning (the carry-out) is simply discarded. What are you left
+                with? <code>00000000</code>. <strong>Perfect zero.</strong>
+                <br><br>
+                Because we removed the redundant "negative zero," we gained one extra slot on the negative side of the
+                scale. That is why a byte can go down to <strong>-128</strong>, but only up to <strong>127</strong>.
+            </p>
+            <br>
+            <hr>
+            <br>
+            <strong>Deep Dive:</strong>
+            If you want a visual breakdown of how these bits actually shift and how the math works in hardware, I highly
+            recommend this video by Ben Eater:
+            <br><br>
+
+            <div class="post-resources">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/4qH4unVtJkE"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </article>
+
+
+    </main>
+
+    <script src="scripts.js" defer></script>
+
+</body>
+
+</html>
